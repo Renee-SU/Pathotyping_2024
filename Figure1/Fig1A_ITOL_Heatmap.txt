@@ -1,0 +1,143 @@
+
+DATASET_HEATMAP
+#In heatmaps, each ID is associated to multiple numeric values, which are displayed as a set of colored boxes defined by a color gradient
+#lines starting with a hash are comments and ignored during parsing
+#=================================================================#
+#                    MANDATORY SETTINGS                           #
+#=================================================================#
+#select the separator which is used to delimit the data below (TAB,SPACE or COMMA).This separator must be used throughout this file.
+SEPARATOR TAB
+#SEPARATOR SPACE
+#SEPARATOR COMMA
+
+#label is used in the legend table (can be changed later)
+DATASET_LABEL	example_heatmap
+
+#dataset color (can be changed later)
+COLOR	#ff0000
+
+#define labels for each individual field column
+FIELD_LABELS	Pc14	Pc35	Pc36	Pc38	Pc39	Pc40	Pc45	Pc46	Pc48	Pc50	Pc51	Pc52	Pc53	Pc54	Pc55	Pc56	Pc57	Pc58	Pc59	Pc60	Pc61	Pc62	Pc63	Pc64	Pc67	Pc68	Pc70	Pc71	Pc91	Pc94	Pc96	Marvelous	H548	IA B605Xsel.	WI X4361-9	TAM-O-405	Belle	HiFi	Leggett	Stainless	Aladdin	Barcoo	Bettong	Cleanleaf	Culgoa	Genie	Gwydir	Saia	Volta	Warrego	X534	X716
+
+#=================================================================#
+#                    OPTIONAL SETTINGS                            #
+#=================================================================#
+
+
+#Heatmaps can have an optional Newick formatted tree assigned. Its leaf IDs must exactly match the dataset FIELD_LABELS.
+#The tree will be used to sort the dataset fields, and will be displayed above the dataset. It can have branch lengths defined.
+#All newlines and spaces should be stripped from the tree, and COMMA cannot be used as the dataset separator if a FIELD_TREE is provided.
+
+#=================================================================#
+#     all other optional settings can be set or changed later     #
+#           in the web interface (under 'Datasets' tab)           #
+#=================================================================#
+
+#Each dataset can have a legend, which is defined using LEGEND_XXX fields below
+#For each row in the legend, there should be one shape, color and label.
+#Optionally, you can define an exact legend position using LEGEND_POSITION_X and LEGEND_POSITION_Y. To use automatic legend positioning, do NOT define these values
+#Optionally, shape scaling can be present (LEGEND_SHAPE_SCALES). For each shape, you can define a scaling factor between 0 and 1.
+#To order legend entries horizontally instead of vertically, set LEGEND_HORIZONTAL to 1
+#Shape should be a number between 1 and 6, or any protein domain shape definition.
+#1: square
+#2: circle
+#3: star
+#4: right pointing triangle
+#5: left pointing triangle
+#6: checkmark
+
+LEGEND_TITLE	Virulence
+#LEGEND_POSITION_X,100
+#LEGEND_POSITION_Y,100
+#LEGEND_HORIZONTAL,0
+LEGEND_SHAPES	1	1
+LEGEND_COLORS	#FCF28C	#FE6C6C
+LEGEND_LABELS	Avirulent	Virulent
+#LEGEND_SHAPE_SCALES,1,1,0.5
+
+#left margin, used to increase/decrease the spacing to the next dataset. Can be negative, causing datasets to overlap.
+MARGIN	0
+
+#width of the individual boxes
+STRIP_WIDTH	20
+
+#always show internal values; if set, values associated to internal nodes will be displayed even if these nodes are not collapsed. It could cause overlapping in the dataset display.
+#SHOW_INTERNAL 0
+
+
+#show dashed lines between leaf labels and the dataset
+#DASHED_LINES 1
+
+#if a FIELD_TREE is present, it can be hidden by setting this option to 0
+SHOW_TREE	1
+
+#define the color for the NULL values in the dataset. Use the letter X in the data to define the NULL values
+#COLOR_NAN #000000
+
+#automatically create and display a legend based on the color gradients and values defined below
+AUTO_LEGEND	0
+
+#define the heatmap gradient colors. Values in the dataset will be mapped onto the corresponding color gradient.
+COLOR_MIN	#FCF28C
+COLOR_MAX	#FE6C6C
+
+#you can specify a gradient with three colors (e.g red to yellow to green) by setting 'USE_MID_COLOR' to 1, and specifying the midpoint color
+USE_MID_COLOR	1
+COLOR_MID	#FCCC8C
+
+#By default, color gradients will be calculated based on dataset values. You can force different values to use in the calculation by setting the values below:
+USER_MIN_VALUE	1
+USER_MAX_VALUE	3
+
+#border width; if set above 0, a border of specified width (in pixels) will be drawn around individual cells
+#BORDER_WIDTH 0
+
+#border color; used only when BORDER_WIDTH is above 0
+#BORDER_COLOR #0000ff
+
+#display or hide the text labels above each field column
+#SHOW_LABELS 1
+
+#text label size factor
+#SIZE_FACTOR 1
+
+#text label rotation
+#LABEL_ROTATION 0
+
+#text label shift in pixels (positive or negative)
+#LABEL_SHIFT 0
+
+
+#Internal tree nodes can be specified using IDs directly, or using the 'last common ancestor' method described in iTOL help pages
+#=================================================================#
+#       Actual data follows after the "DATA" keyword              #
+#=================================================================#
+DATA
+24NSW41	1	3	3	1	1	1	1	1	1	1	1	1	3	3	1	3	1	1	1	3	1	1	1	1	3	1	3	1	1	1	3	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA10	1	1	1	1	1	3	3	1	3	1	1	1	3	3	1	1	1	1	1	3	1	1	1	3	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA23	1	1	1	1	1	3	3	1	3	1	1	1	3	3	1	1	1	1	1	3	1	1	1	3	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA17	1	1	1	1	1	1	3	1	1	1	1	1	3	3	1	1	1	1	1	3	1	1	1	1	1	1	3	1	1	1	1	3	3	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24SA31	1	1	1	1	3	3	3	1	1	1	1	1	3	3	3	1	3	1	1	3	1	1	1	1	1	1	3	1	1	1	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA18	1	1	1	1	3	1	3	1	1	1	1	1	3	3	1	1	3	1	1	3	1	1	1	1	3	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24NSW43	1	1	1	1	1	1	3	3	3	1	1	1	1	3	1	1	3	1	1	3	1	1	1	1	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24NSW45	1	1	1	1	3	1	3	3	3	1	1	1	1	3	1	1	3	1	1	3	3	1	1	1	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA19	1	1	1	1	3	1	3	3	3	1	1	1	1	3	1	1	3	1	1	3	1	1	1	1	3	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA21	1	1	1	1	1	1	3	3	3	1	3	3	3	3	1	1	3	1	1	3	1	1	1	1	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA25	1	1	1	1	1	1	3	3	1	1	1	1	1	3	1	1	3	1	1	3	1	1	1	1	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA09	1	1	1	1	3	1	3	3	1	1	1	1	1	3	1	1	3	1	1	3	1	1	1	1	3	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA14	1	1	1	1	1	1	3	3	1	1	1	1	1	3	1	1	3	1	1	3	1	1	1	1	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA13	1	1	1	1	1	1	3	3	1	1	1	1	1	3	1	1	3	1	1	3	1	1	1	1	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA12	1	1	1	1	1	1	3	3	1	1	1	1	1	3	1	1	3	1	1	3	1	1	1	1	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24SA27	1	1	1	1	1	1	3	1	1	1	1	1	1	3	1	1	3	1	1	1	1	1	1	1	1	1	3	1	1	1	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA20	1	1	1	1	3	3	3	3	1	1	1	1	1	3	1	1	3	1	1	3	1	1	1	1	3	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA24	1	1	1	1	3	1	3	3	1	1	1	1	1	3	1	1	3	1	1	3	1	1	1	1	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA22	1	1	1	1	1	1	3	3	1	1	1	1	1	3	1	1	3	1	1	3	1	1	1	1	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA16	1	1	1	1	1	1	3	3	1	1	3	1	3	3	1	1	1	1	1	3	1	3	1	3	3	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	3	3
+24SA26	1	1	1	1	1	1	3	3	1	1	3	1	3	3	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	3	3
+24SA28	1	1	1	1	1	3	3	3	1	1	3	1	3	3	1	1	3	1	1	3	1	3	1	3	1	1	3	1	1	1	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24VIC29	1	1	1	1	1	3	3	3	1	1	3	1	3	3	1	1	1	1	1	3	1	3	1	3	1	1	3	1	1	1	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24NSW44	1	1	1	1	1	3	3	3	1	1	3	1	3	3	1	1	1	1	1	1	1	3	1	3	3	1	1	1	1	1	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24NSW08	1	1	1	1	1	1	3	3	1	1	3	1	1	3	1	1	1	1	1	3	1	3	1	3	1	1	1	1	1	1	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	3	1
+24WA11	1	1	1	1	1	1	3	3	1	1	3	1	3	1	1	1	1	1	1	1	1	3	1	3	1	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24VIC40	1	1	1	1	1	1	3	3	1	1	3	1	3	3	1	1	1	1	1	3	1	1	1	3	1	1	1	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+24WA15	1	1	1	1	1	3	3	3	1	1	1	1	1	3	1	1	1	1	1	3	1	3	1	3	3	1	3	1	1	1	1	3	1	3	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
