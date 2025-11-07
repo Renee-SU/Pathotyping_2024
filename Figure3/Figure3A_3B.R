@@ -156,8 +156,13 @@ df <- df %>%
   filter(rowSums(across(all_of(lineage_cols)), na.rm = TRUE) > 0)
 
 # ----- Step 2: Collapse lineages -----
+df <- df %>%
+  mutate(across(all_of(lineage_cols), ~as.numeric(trimws(.)))) %>%
+  filter(rowSums(across(all_of(lineage_cols)), na.rm = TRUE) > 0)
+
 df$total  <- rowSums(df[, lineage_cols], na.rm = TRUE)
-df$radius <- rescale(df$total, to = c(1.5, 3.6))
+
+df$radius <- scales::rescale(df$total, to = c(1.5, 3.6))
 
 # ----- Step 3: Base map -----
 states <- ozmap("states")
@@ -223,16 +228,27 @@ p_pie <- p_pie +
   )
 
 # ----- Step 6: Dummy legend plot -----
+present_lineages <- df %>%
+  summarise(across(all_of(lineage_cols), ~sum(.x, na.rm = TRUE))) %>%
+  pivot_longer(everything(), names_to = "lineage", values_to = "total") %>%
+  filter(total > 0) %>%
+  pull(lineage)
+
+lineage_colors_present <- lineage_colors[present_lineages]
+
 dummy_legend_data <- tibble(
-  lineage = factor(lineage_cols, levels = lineage_cols),
+  lineage = factor(present_lineages, levels = present_lineages),
   value = 1
 )
 
 legend_plot <- ggplot(dummy_legend_data, aes(x = lineage, y = value, fill = lineage)) +
   geom_bar(stat = "identity") +
-  scale_fill_manual(values = lineage_colors, name = "Lineage",
-                    breaks = lineage_cols,
-                    labels = paste0("L", lineage_cols)) +
+  scale_fill_manual(
+    values = lineage_colors_present,
+    name = "Lineage",
+    breaks = present_lineages,
+    labels = paste0("L", present_lineages)
+  ) +
   theme_void() +
   theme(
     legend.position = "right",
@@ -248,5 +264,6 @@ final_plot <- cowplot::ggdraw() +
   draw_plot(p_map, x = 0, y = 0, width = 0.88, height = 1) +
   draw_plot(p_pie, x = 0, y = 0, width = 0.88, height = 1) +
   draw_plot(legend_grob, x = 0.80, y = 0.28, width = 0.18, height = 0.52)
+
 
 
